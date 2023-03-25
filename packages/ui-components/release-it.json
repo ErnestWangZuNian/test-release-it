@@ -1,0 +1,15 @@
+{
+  "git": {
+    "tag": false,
+    "commitMessage": "release: @wzn/ui-components v${version}"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md"
+    }
+  }
+}
