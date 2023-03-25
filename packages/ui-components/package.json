@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-   "release": "release-it"
+    "release": "release-it"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,31 @@
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.1.1"
+  },
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "release: @wzn/ui-components v${version}"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "hooks": {
+      "before:init": [
+        "npm run lint",
+        "npm test"
+      ],
+      "after:git:release": "echo After git push, before github release",
+      "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "header": "# Changelog",
+        "preset": {
+          "name": "conventionalcommits"
+        }
+      }
+    }
   }
 }
